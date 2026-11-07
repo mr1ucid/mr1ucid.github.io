@@ -319,6 +319,52 @@
     </div>
   </section>
 
+  <!-- ================= КАК СЛУШАТЬ В ПРИЛОЖЕНИЯХ ================= -->
+  <section class="tutorial reveal" id="tutorial">
+    <div class="container">
+      <span class="label">как слушать</span>
+      <h2 class="section-title">Слушать в приложениях<br><em>Яндекс, Spotify, VK</em></h2>
+      <p class="tutorial__intro">
+        Чтобы саблиминалы всегда были под рукой и синхронизировались между устройствами, их можно добавить в свой профиль в музыкальных стриминговых сервисах. Вот несколько способов для самых популярных платформ.
+      </p>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">01</span>
+          <div>
+            <h4>Яндекс Музыка</h4>
+            <p>Загрузите файлы в личную фонотеку. В веб-версии перейдите в «Коллекцию» → создайте плейлист → нажмите «Загрузить трек» (подойдут MP3, AAC или FLAC до 200 МБ). Треки будут доступны только вам и синхронизируются между устройствами для личного прослушивания[reference:0].</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <div>
+            <h4>Spotify</h4>
+            <p>Самый простой способ — использовать локальные файлы. В настройках приложения включите «Показывать локальные файлы» (Show Local Files), и треки с вашего устройства появятся в библиотеке. Для публикации в общем каталоге Spotify нужен бесплатный дистрибьютор (например, RouteNote), который отправит трек на модерацию[reference:1][reference:2].</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <div>
+            <h4>SoundCloud</h4>
+            <p>Самый открытый сервис для загрузки. На главной странице нажмите кнопку «Загрузить» (Upload), перетащите MP3-файл и заполните метаданные (название, обложка, теги). Трек сразу станет доступен по ссылке, его можно сделать публичным или приватным[reference:3][reference:4].</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num">04</span>
+          <div>
+            <h4>ВК Музыка</h4>
+            <p>В веб-версии или приложении перейдите в раздел «Музыка» → нажмите «Загрузить аудиозапись». Выберите MP3-файл (до 200 МБ), и он появится в ваших аудиозаписях. Для попадания в общий каталог VK Музыки потребуется публикация через дистрибьютора, но для личного прослушивания и добавления в плейлисты прямой загрузки достаточно[reference:5][reference:6].</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="note">
+        <strong>Совет:</strong> Если вы планируете делиться саблиминалами с другими, самый простой путь — SoundCloud. Он позволяет быстро загрузить трек и получить прямую ссылку, которую можно отправить кому угодно.
+      </div>
+    </div>
+  </section>
+
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
@@ -333,10 +379,7 @@
   </footer>
 
   <script>
-    // 1. Год в футере
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // 2. Анимация появления (исправлено: threshold: 0)
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -345,10 +388,9 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0 }); // <-- ИСПРАВЛЕНИЕ ЗДЕСЬ
+    }, { threshold: 0 });
     reveals.forEach(el => io.observe(el));
 
-    // 3. Запрет на одновременное воспроизведение
     const audios = document.querySelectorAll('audio');
     audios.forEach(audio => {
       audio.addEventListener('play', function() {
