@@ -88,228 +88,183 @@
         Каждый трек — отдельный настрой. Нажми play и позволь звуку работать за тебя.
       </p>
 
-      <div class="library__grid">
+      <!-- Поиск -->
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="Поиск (например: ранняя пташка, учеба, любовь, деньги...)" autocomplete="off">
+      </div>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/01.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+      <div class="library__grid" id="libraryGrid">
+
+        <article class="track" data-tags="early bird ранняя пташка рано вставать режим сон отдых энергия утро просыпаться">
+          <div class="track__cover"><img src="images/01.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">01</span></div>
           <h3 class="track__title">ᴇᴀrly ʙird suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/early_bird.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/02.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="vampire вампир вампирская красота клыки аура мистика холодность внешность">
+          <div class="track__cover"><img src="images/02.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">02</span></div>
           <h3 class="track__title">vᴀʍᴩirᴇ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/vampire.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/03.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="desired appearance желаемая внешность красота привлекательность отражение лицо">
+          <div class="track__cover"><img src="images/03.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">03</span></div>
           <h3 class="track__title">dᴇsirᴇd ᴀᴩᴩᴇᴀrᴀnᴄᴇ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/desired_appearance.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/04.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="new phone новый телефон телефон мечты айфон iphone гаджет покупка">
+          <div class="track__cover"><img src="images/04.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">04</span></div>
           <h3 class="track__title">nᴇw ᴩhᴏnᴇ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/new_phone.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/05.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="weight loss похудение здоровое тело безопасное похудение стройность вес фигура">
+          <div class="track__cover"><img src="images/05.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">05</span></div>
           <h3 class="track__title">wᴇighᴛ lᴏss suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/weight_loss.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/06.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="time control контроль над временем управление временем продуктивность успевать тайм менеджмент">
+          <div class="track__cover"><img src="images/06.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">06</span></div>
           <h3 class="track__title">ᴛiʍᴇ ᴄᴏnᴛrᴏl suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/time_control.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/07.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="booster бустер усиление результатов мотивация ускорение">
+          <div class="track__cover"><img src="images/07.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">07</span></div>
           <h3 class="track__title">ʙᴏᴏsᴛᴇr</h3>
           <audio controls preload="none"><source src="audio/booster.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/08.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="doll beauty кукольная красота кукольная внешность нежность гармония лицо привлекательность">
+          <div class="track__cover"><img src="images/08.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">08</span></div>
           <h3 class="track__title">dᴏll ʙᴇᴀuᴛy suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/doll_beauty.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/09.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="respect from teachers уважение учителей школа учеба успеваемость оценки без усилий">
+          <div class="track__cover"><img src="images/09.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">09</span></div>
           <h3 class="track__title">rᴇsᴩᴇᴄᴛ frᴏʍ ᴛᴇᴀᴄhᴇrs suʙ</h3>
           <audio controls preload="none"><source src="audio/respect_from_teachers.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/10.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="love любовь отношения крепкие отношения союз взаимность любимый человек">
+          <div class="track__cover"><img src="images/10.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">10</span></div>
           <h3 class="track__title">lᴏvᴇ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/love.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/11.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="usa сша америка переезд в америку виза жизнь в сша">
+          <div class="track__cover"><img src="images/11.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">11</span></div>
           <h3 class="track__title">ᏌᏚᎪ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/usa.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/12.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="shifting шифтинг удачный шифтинг перемещение реальность квантовый скачок">
+          <div class="track__cover"><img src="images/12.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">12</span></div>
           <h3 class="track__title">ⲋⲏⲓϝⲧⲓⲛⳋ ⲋυⲃⳑⲓⲙⲓⲛⲁⳑ</h3>
           <audio controls preload="none"><source src="audio/shifting.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/13.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="ideal body идеальное тело тело мечты фигура форма">
+          <div class="track__cover"><img src="images/13.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">13</span></div>
           <h3 class="track__title">ⲓⲇⲉⲁⳑ ⲃⲟⲇⲩ ⲋυⲃⳑⲓⲙⲓⲛⲁⳑ</h3>
           <audio controls preload="none"><source src="audio/ideal_body.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/14.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="ideal skin идеальная кожа чистая кожа уход красота лица">
+          <div class="track__cover"><img src="images/14.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">14</span></div>
           <h3 class="track__title">ⲓⲇⲉⲁⳑ ⲋⲕⲓⲛ ⲋυⲃⳑⲓⲙⲓⲛⲁⳑ</h3>
           <audio controls preload="none"><source src="audio/ideal_skin.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/15.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="mogg моггинг моггать внешность идеальная внешность лицо челюсть">
+          <div class="track__cover"><img src="images/15.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">15</span></div>
           <h3 class="track__title">ʍᴏgg suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/mogg.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/16.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="success успех во всех сферах победа первое место">
+          <div class="track__cover"><img src="images/16.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">16</span></div>
           <h3 class="track__title">suᴄᴄᴇss suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/success.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/17.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="luck удача везение везде и во всем счастливчик">
+          <div class="track__cover"><img src="images/17.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">17</span></div>
           <h3 class="track__title">luᴄᴋ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/luck.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/18.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="powerful self concept селф концепт прокачка селф концепта уверенность самооценка вера в себя">
+          <div class="track__cover"><img src="images/18.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">18</span></div>
           <h3 class="track__title">ᴩᴏwᴇrful sᴇlf ᴄᴏnᴄᴇᴩᴛ suʙ</h3>
           <audio controls preload="none"><source src="audio/powerful_self_concept.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/19.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="money деньги денежное изобилие богатство финансы доход">
+          <div class="track__cover"><img src="images/19.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">19</span></div>
           <h3 class="track__title">ʍᴏnᴇy suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/money.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/20.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="friendship дружба друзья новые знакомства общение социум">
+          <div class="track__cover"><img src="images/20.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">20</span></div>
           <h3 class="track__title">friᴇndshiᴩ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/friendship.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/21.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="pet питомец питомец мечты животное кот собака любимец">
+          <div class="track__cover"><img src="images/21.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">21</span></div>
           <h3 class="track__title">ᴩᴇᴛ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/pet.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/22.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="cp к4 одержимость любовь привязанность отношения кп">
+          <div class="track__cover"><img src="images/22.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">22</span></div>
           <h3 class="track__title">ᴄᴩ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/cp.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/23.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="ideal me идеальный я всё включено суперкомпьютер учеба успех удача идеал">
+          <div class="track__cover"><img src="images/23.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">23</span></div>
           <h3 class="track__title">idᴇᴀl ʍᴇ suʙliʍinᴀl</h3>
           <audio controls preload="none"><source src="audio/ideal_me.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/24.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="money for hobby доход от хобби деньги хобби заработок творчество">
+          <div class="track__cover"><img src="images/24.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">24</span></div>
           <h3 class="track__title">ʍᴏnᴇy fᴏr hᴏʙʙy suʙ</h3>
           <audio controls preload="none"><source src="audio/money_for_hobby.mp3" type="audio/mpeg"></audio>
         </article>
 
-        <article class="track">
-          <div class="track__cover">
-            <img src="images/25.jpg" alt="Cover" onerror="this.style.display='none'">
-          </div>
+        <article class="track" data-tags="english c2 английский язык выучить английский c2">
+          <div class="track__cover"><img src="images/25.jpg" alt="Cover" onerror="this.style.display='none'"></div>
           <div class="track__head"><span class="track__index">25</span></div>
           <h3 class="track__title">ᴇnglish Ꮯ2 suʙ</h3>
           <audio controls preload="none"><source src="audio/english_c2.mp3" type="audio/mpeg"></audio>
@@ -399,6 +354,23 @@
             otherAudio.pause();
           }
         });
+      });
+    });
+
+    // ================= ПОИСК =================
+    const searchInput = document.getElementById('searchInput');
+    const tracks = document.querySelectorAll('.track');
+
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase().trim();
+      
+      tracks.forEach(track => {
+        const tags = track.getAttribute('data-tags')?.toLowerCase() || '';
+        if (query === '' || tags.includes(query)) {
+          track.style.display = ''; 
+        } else {
+          track.style.display = 'none'; 
+        }
       });
     });
   </script>
