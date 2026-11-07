@@ -336,7 +336,7 @@
     // 1. Год в футере
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 2. Анимация появления
+    // 2. Анимация появления (исправлено: threshold: 0)
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -345,7 +345,7 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0 }); // <-- ИСПРАВЛЕНИЕ ЗДЕСЬ
     reveals.forEach(el => io.observe(el));
 
     // 3. Запрет на одновременное воспроизведение
