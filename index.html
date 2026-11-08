@@ -2,377 +2,210 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mr1ucid — пространство манифестации</title>
-  <meta name="description" content="Пространство саблиминалов и тихой манифестации. Слушай. Настраивайся. Становись." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>MR1UCID — Create Your Own Reality</title>
+  
+  <!-- SEO & Meta -->
+  <meta name="description" content="A space for shifting, manifestation, subliminals and becoming the version of yourself you've always imagined." />
+  <meta name="theme-color" content="#09090D" />
+  <link rel="canonical" href="https://mr1ucid.github.io/" />
+  
+  <!-- Open Graph (Для красивых ссылок в Telegram/WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mr1ucid.github.io/" />
+  <meta property="og:title" content="MR1UCID — Create Your Own Reality" />
+  <meta property="og:description" content="A space for shifting, manifestation, subliminals and becoming the version of yourself you've always imagined." />
+  <meta property="og:image" content="https://mr1ucid.github.io/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MR1UCID — Create Your Own Reality" />
+  <meta name="twitter:description" content="A space for shifting, manifestation, subliminals..." />
+  <meta name="twitter:image" content="https://mr1ucid.github.io/og-image.jpg" />
+
+  <!-- PWA & Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ================= HERO ================= -->
-  <header class="hero">
-    <div class="hero__inner">
-      <p class="hero__eyebrow">mr1ucid</p>
-      <h1 class="hero__title">Ты — автор<br><em>своей реальности.</em></h1>
-      <p class="hero__subtitle">
-        Тишина, в которой рождается новое. Саблиминалы — это мягкий способ
-        настроить подсознание на то, во что ты хочешь поверить.
-      </p>
-      <div class="hero__scroll">↓</div>
-    </div>
+  <!-- Фоновые эффекты -->
+  <div class="bg-effects">
+    <div class="stars"></div>
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+    <div class="film-grain"></div>
+  </div>
+
+  <!-- Навигация -->
+  <header class="top-nav">
+    <a href="#home" class="logo">MR1UCID</a>
+    <nav class="nav-links">
+      <a href="#subliminals">Subliminals</a>
+      <a href="#shifting">Shifting</a>
+      <a href="#manifestation">Manifestation</a>
+      <a href="#affirmations">Affirmations</a>
+      <a href="#my-space">My Space</a>
+    </nav>
+    <button id="installPwaBtn" class="btn-install" style="display: none;">Install App</button>
   </header>
 
-  <!-- ================= МАНИФЕСТ ================= -->
-  <section class="manifesto reveal">
-    <div class="container">
-      <span class="label">манифест</span>
-      <h2 class="section-title">О манифестации</h2>
-      <div class="manifesto__text">
-        <p>
-          Манифестация — это не магия и не волшебная кнопка. Это практика
-          осознанного внимания: то, на что направлен твой внутренний взгляд,
-          постепенно становится тем, что ты замечаешь в мире, и тем, во что
-          начинаешь действовать.
-        </p>
-        <p>
-          Мы не притягиваем желания из воздуха. Мы учимся <em>быть готовыми</em>
-          к тому, чего хотим: замечать возможности, выбирать слова, засыпать
-          с ясной мыслью и просыпаться с ней же. Повторяемое становится
-          привычным. Привычное — естественным. Естественное — реальностью.
-        </p>
-        <p class="manifesto__quote">
-          «Реальность — это не то, что с тобой происходит.<br>
-          Это то, во что ты веришь, когда никто не смотрит».
-        </p>
-      </div>
-    </div>
-  </section>
+  <!-- Основной контент (SPA Контейнер) -->
+  <main id="app-container">
 
-  <!-- ================= ЧТО ТАКОЕ САБЛИМИНАЛЫ ================= -->
-  <section class="about reveal">
-    <div class="container">
-      <span class="label">основа</span>
-      <h2 class="section-title">Что такое саблиминалы</h2>
-      <div class="about__grid">
-        <div class="about__card">
-          <span class="about__num">01</span>
-          <h3>Определение</h3>
-          <p>
-            Саблиминал — это аудио, в котором позитивные утверждения (аффирмации)
-            наложены на музыку или звуки природы на грани слышимости. Сознание
-            их не разбирает, а подсознание — впитывает.
-          </p>
-        </div>
-        <div class="about__card">
-          <span class="about__num">02</span>
-          <h3>Как это работает</h3>
-          <p>
-            Утверждения записаны тихо — ниже уровня осознанного восприятия.
-            Мозг продолжает обрабатывать звук, а повторяющиеся фразы постепенно
-            меняют внутреннюю «настройку»: убеждения, реакции, самоощущение.
-          </p>
+    <!-- ================= ГЛАВНАЯ ================= -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <h1 class="hero-title">CREATE YOUR<br><em>OWN REALITY</em></h1>
+        <p class="hero-subtitle">A space for shifting, manifestation, subliminals and becoming the version of yourself you've always imagined.</p>
+        <div class="hero-btns">
+          <a href="#subliminals" class="btn-primary">Explore</a>
+          <a href="#shifting" class="btn-secondary">Discover Your Reality</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ================= САБЛИМИНАЛЫ ================= -->
-  <section class="library reveal" id="library">
-    <div class="container">
-      <span class="label">коллекция</span>
-      <h2 class="section-title">Мои саблиминалы</h2>
-      <p class="library__intro">
-        Каждый трек — отдельный настрой. Нажми play и позволь звуку работать за тебя.
-      </p>
-
-      <!-- Поиск -->
-      <div class="search-wrapper">
-        <input type="text" id="searchInput" class="search-input" placeholder="Поиск (например: ранняя пташка, учеба, любовь, деньги...)" autocomplete="off">
-      </div>
-
-      <div class="library__grid" id="libraryGrid">
-
-        <article class="track" data-tags="early bird ранняя пташка рано вставать режим сон отдых энергия утро просыпаться">
-          <div class="track__cover"><img src="images/01.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">01</span></div>
-          <h3 class="track__title">ᴇᴀrly ʙird suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/early_bird.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="vampire вампир вампирская красота клыки аура мистика холодность внешность">
-          <div class="track__cover"><img src="images/02.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">02</span></div>
-          <h3 class="track__title">vᴀʍᴩirᴇ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/vampire.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="desired appearance желаемая внешность красота привлекательность отражение лицо">
-          <div class="track__cover"><img src="images/03.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">03</span></div>
-          <h3 class="track__title">dᴇsirᴇd ᴀᴩᴩᴇᴀrᴀnᴄᴇ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/desired_appearance.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="new phone новый телефон телефон мечты айфон iphone гаджет покупка">
-          <div class="track__cover"><img src="images/04.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">04</span></div>
-          <h3 class="track__title">nᴇw ᴩhᴏnᴇ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/new_phone.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="weight loss похудение здоровое тело безопасное похудение стройность вес фигура">
-          <div class="track__cover"><img src="images/05.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">05</span></div>
-          <h3 class="track__title">wᴇighᴛ lᴏss suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/weight_loss.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="time control контроль над временем управление временем продуктивность успевать тайм менеджмент">
-          <div class="track__cover"><img src="images/06.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">06</span></div>
-          <h3 class="track__title">ᴛiʍᴇ ᴄᴏnᴛrᴏl suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/time_control.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="booster бустер усиление результатов мотивация ускорение">
-          <div class="track__cover"><img src="images/07.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">07</span></div>
-          <h3 class="track__title">ʙᴏᴏsᴛᴇr</h3>
-          <audio controls preload="none"><source src="audio/booster.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="doll beauty кукольная красота кукольная внешность нежность гармония лицо привлекательность">
-          <div class="track__cover"><img src="images/08.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">08</span></div>
-          <h3 class="track__title">dᴏll ʙᴇᴀuᴛy suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/doll_beauty.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="respect from teachers уважение учителей школа учеба успеваемость оценки без усилий">
-          <div class="track__cover"><img src="images/09.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">09</span></div>
-          <h3 class="track__title">rᴇsᴩᴇᴄᴛ frᴏʍ ᴛᴇᴀᴄhᴇrs suʙ</h3>
-          <audio controls preload="none"><source src="audio/respect_from_teachers.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="love любовь отношения крепкие отношения союз взаимность любимый человек">
-          <div class="track__cover"><img src="images/10.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">10</span></div>
-          <h3 class="track__title">lᴏvᴇ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/love.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="usa сша америка переезд в америку виза жизнь в сша">
-          <div class="track__cover"><img src="images/11.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">11</span></div>
-          <h3 class="track__title">ᏌᏚᎪ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/usa.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="shifting шифтинг удачный шифтинг перемещение реальность квантовый скачок">
-          <div class="track__cover"><img src="images/12.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">12</span></div>
-          <h3 class="track__title">ⲋⲏⲓϝⲧⲓⲛⳋ ⲋυⲃⳑⲓⲙⲓⲛⲁⳑ</h3>
-          <audio controls preload="none"><source src="audio/shifting.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="ideal body идеальное тело тело мечты фигура форма">
-          <div class="track__cover"><img src="images/13.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">13</span></div>
-          <h3 class="track__title">ⲓⲇⲉⲁⳑ ⲃⲟⲇⲩ ⲋυⲃⳑⲓⲙⲓⲛⲁⳑ</h3>
-          <audio controls preload="none"><source src="audio/ideal_body.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="ideal skin идеальная кожа чистая кожа уход красота лица">
-          <div class="track__cover"><img src="images/14.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">14</span></div>
-          <h3 class="track__title">ⲓⲇⲉⲁⳑ ⲋⲕⲓⲛ ⲋυⲃⳑⲓⲙⲓⲛⲁⳑ</h3>
-          <audio controls preload="none"><source src="audio/ideal_skin.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="mogg моггинг моггать внешность идеальная внешность лицо челюсть">
-          <div class="track__cover"><img src="images/15.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">15</span></div>
-          <h3 class="track__title">ʍᴏgg suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/mogg.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="success успех во всех сферах победа первое место">
-          <div class="track__cover"><img src="images/16.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">16</span></div>
-          <h3 class="track__title">suᴄᴄᴇss suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/success.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="luck удача везение везде и во всем счастливчик">
-          <div class="track__cover"><img src="images/17.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">17</span></div>
-          <h3 class="track__title">luᴄᴋ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/luck.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="powerful self concept селф концепт прокачка селф концепта уверенность самооценка вера в себя">
-          <div class="track__cover"><img src="images/18.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">18</span></div>
-          <h3 class="track__title">ᴩᴏwᴇrful sᴇlf ᴄᴏnᴄᴇᴩᴛ suʙ</h3>
-          <audio controls preload="none"><source src="audio/powerful_self_concept.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="money деньги денежное изобилие богатство финансы доход">
-          <div class="track__cover"><img src="images/19.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">19</span></div>
-          <h3 class="track__title">ʍᴏnᴇy suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/money.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="friendship дружба друзья новые знакомства общение социум">
-          <div class="track__cover"><img src="images/20.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">20</span></div>
-          <h3 class="track__title">friᴇndshiᴩ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/friendship.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="pet питомец питомец мечты животное кот собака любимец">
-          <div class="track__cover"><img src="images/21.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">21</span></div>
-          <h3 class="track__title">ᴩᴇᴛ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/pet.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="cp к4 одержимость любовь привязанность отношения кп">
-          <div class="track__cover"><img src="images/22.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">22</span></div>
-          <h3 class="track__title">ᴄᴩ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/cp.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="ideal me идеальный я всё включено суперкомпьютер учеба успех удача идеал">
-          <div class="track__cover"><img src="images/23.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">23</span></div>
-          <h3 class="track__title">idᴇᴀl ʍᴇ suʙliʍinᴀl</h3>
-          <audio controls preload="none"><source src="audio/ideal_me.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="money for hobby доход от хобби деньги хобби заработок творчество">
-          <div class="track__cover"><img src="images/24.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">24</span></div>
-          <h3 class="track__title">ʍᴏnᴇy fᴏr hᴏʙʙy suʙ</h3>
-          <audio controls preload="none"><source src="audio/money_for_hobby.mp3" type="audio/mpeg"></audio>
-        </article>
-
-        <article class="track" data-tags="english c2 английский язык выучить английский c2">
-          <div class="track__cover"><img src="images/25.jpg" alt="Cover" onerror="this.style.display='none'"></div>
-          <div class="track__head"><span class="track__index">25</span></div>
-          <h3 class="track__title">ᴇnglish Ꮯ2 suʙ</h3>
-          <audio controls preload="none"><source src="audio/english_c2.mp3" type="audio/mpeg"></audio>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= КАК СЛУШАТЬ В ПРИЛОЖЕНИЯХ ================= -->
-  <section class="tutorial reveal" id="tutorial">
-    <div class="container">
-      <span class="label">как слушать</span>
-      <h2 class="section-title">Слушать в приложениях<br><em>Яндекс, Spotify, VK</em></h2>
-      <p class="tutorial__intro">
-        Чтобы саблиминалы всегда были под рукой и синхронизировались между устройствами, их можно добавить в свой профиль в музыкальных стриминговых сервисах. Вот несколько способов для самых популярных платформ.
-      </p>
-
-      <ol class="steps">
-        <li class="step">
-          <span class="step__num"></span>
-          <div>
-            <h4>Яндекс Музыка</h4>
-            <p>Загрузите файлы в личную фонотеку. В веб-версии перейдите в «Коллекцию» → создайте плейлист → нажмите «Загрузить трек» (подойдут MP3, AAC или FLAC до 200 МБ). Треки будут доступны только вам и синхронизируются между устройствами для личного прослушивания.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__num"></span>
-          <div>
-            <h4>Spotify</h4>
-            <p>Самый простой способ — использовать локальные файлы. В настройках приложения включите «Показывать локальные файлы» (Show Local Files), и треки с вашего устройства появятся в библиотеке. Для публикации в общем каталоге Spotify нужен бесплатный дистрибьютор (например, RouteNote), который отправит трек на модерацию.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__num"></span>
-          <div>
-            <h4>SoundCloud</h4>
-            <p>Самый открытый сервис для загрузки. На главной странице нажмите кнопку «Загрузить» (Upload), перетащите MP3-файл и заполните метаданные (название, обложка, теги). Трек сразу станет доступен по ссылке, его можно сделать публичным или приватным.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step__num"></span>
-          <div>
-            <h4>ВК Музыка</h4>
-            <p>В веб-версии или приложении перейдите в раздел «Музыка» → нажмите «Загрузить аудиозапись». Выберите MP3-файл (до 200 МБ), и он появится в ваших аудиозаписях. Для попадания в общий каталог VK Музыки потребуется публикация через дистрибьютора, но для личного прослушивания и добавления в плейлисты прямой загрузки достаточно.</p>
-          </div>
-        </li>
-      </ol>
-
-      <div class="note">
-        <strong>Совет:</strong> Если вы планируете делиться саблиминалами с другими, самый простой путь — SoundCloud. Он позволяет быстро загрузить трек и получить прямую ссылку, которую можно отправить кому угодно.
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <div class="container">
-      <p class="footer__brand">mr1ucid</p>
-      <p class="footer__text">
-        Сделано в тишине. Слушай бережно. Возвращайся к себе.
-      </p>
-      <p class="footer__meta">
-        © <span id="year"></span> · Пространство манифестации
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0 });
-    reveals.forEach(el => io.observe(el));
-
-    const audios = document.querySelectorAll('audio');
-    audios.forEach(audio => {
-      audio.addEventListener('play', function() {
-        audios.forEach(otherAudio => {
-          if (otherAudio !== audio && !otherAudio.paused) {
-            otherAudio.pause();
-          }
-        });
-      });
-    });
-
-    // ================= ПОИСК =================
-    const searchInput = document.getElementById('searchInput');
-    const tracks = document.querySelectorAll('.track');
-
-    searchInput.addEventListener('input', function(e) {
-      const query = e.target.value.toLowerCase().trim();
       
-      tracks.forEach(track => {
-        const tags = track.getAttribute('data-tags')?.toLowerCase() || '';
-        if (query === '' || tags.includes(query)) {
-          track.style.display = ''; 
-        } else {
-          track.style.display = 'none'; 
-        }
-      });
-    });
-  </script>
+      <div class="home-grid">
+        <a href="#subliminals" class="card nav-card">
+          <h3>Subliminals</h3>
+          <p>25 авторских треков для настройки подсознания.</p>
+        </a>
+        <a href="#shifting" class="card nav-card">
+          <h3>Shifting</h3>
+          <p>Создай скрипт своей идеальной реальности.</p>
+        </a>
+        <a href="#manifestation" class="card nav-card">
+          <h3>Manifestation</h3>
+          <p>Трекеры 369, 55x5 и дневник желаний.</p>
+        </a>
+        <a href="#my-space" class="card nav-card">
+          <h3>My Space</h3>
+          <p>Твоя личная вселенная и Vision Board.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= САБЛИМИНАЛЫ ================= -->
+    <section id="subliminals" class="page">
+      <div class="section-header">
+        <h2>My Subliminals</h2>
+        <p>Нажми Play. Позволь звуку работать за тебя.</p>
+      </div>
+      
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Поиск (например: ранняя пташка, учеба, любовь...)">
+      </div>
+
+      <div class="library-grid" id="libraryGrid">
+        <!-- Треки генерируются через JS для чистоты кода -->
+      </div>
+    </section>
+
+    <!-- ================= SHIFTING ================= -->
+    <section id="shifting" class="page">
+      <div class="section-header">
+        <h2>Shifting & Desired Reality</h2>
+        <p>Создай свой сценарий, свою вселенную.</p>
+      </div>
+      
+      <div class="shifting-container">
+        <div class="card script-creator">
+          <h3>DR Script Creator</h3>
+          <form id="drScriptForm">
+            <input type="text" id="drName" placeholder="Название DR (например: Hogwarts, Mystic Falls)" required>
+            <textarea id="drDesc" placeholder="Описание реальности, кто ты там, твои способности..." rows="5" required></textarea>
+            <button type="submit" class="btn-primary">Save Script</button>
+          </form>
+          <div id="savedScripts" class="saved-scripts"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MANIFESTATION ================= -->
+    <section id="manifestation" class="page">
+      <div class="section-header">
+        <h2>Manifestation Tools</h2>
+        <p>Практики, которые меняют реальность.</p>
+      </div>
+      
+      <div class="tools-grid">
+        <div class="card tool-card">
+          <h3>369 Method</h3>
+          <p>Напиши желание 3 раза утром, 6 раз днем, 9 раз вечером.</p>
+          <input type="text" id="intention369" placeholder="Твое желание...">
+          <div class="counter-controls">
+            <button class="btn-secondary" onclick="update369('morning')">Morning (3)</button>
+            <button class="btn-secondary" onclick="update369('day')">Day (6)</button>
+            <button class="btn-secondary" onclick="update369('night')">Night (9)</button>
+          </div>
+          <p id="status369">Progress: 0/18</p>
+        </div>
+        
+        <div class="card tool-card">
+          <h3>Affirmations Generator</h3>
+          <p>Случайная аффирмация для поднятия вибраций.</p>
+          <div id="randomAffirmation" class="affirmation-display">Нажми кнопку ниже</div>
+          <button class="btn-primary" onclick="generateAffirmation()">Generate</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MY SPACE ================= -->
+    <section id="my-space" class="page">
+      <div class="section-header">
+        <h2>My Space</h2>
+        <p>Твой личный дашборд.</p>
+      </div>
+      <div class="dashboard">
+        <div class="card">
+          <h3 id="greeting">Hello, Creator</h3>
+          <p id="clock">00:00</p>
+          <p id="date">Date</p>
+        </div>
+        <div class="card">
+          <h3>Daily Intention</h3>
+          <textarea id="dailyIntention" placeholder="Что ты манифестируешь сегодня?" rows="3"></textarea>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= ГЛОБАЛЬНЫЙ АУДИОПЛЕЕР ================= -->
+  <div class="global-player" id="globalPlayer">
+    <div class="player-info">
+      <div class="player-cover" id="playerCover"></div>
+      <div class="player-text">
+        <span class="player-title" id="playerTitle">Название трека</span>
+        <span class="player-status" id="playerStatus">Нажми Play</span>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button id="prevBtn">⏮</button>
+      <button id="playPauseBtn">▶</button>
+      <button id="nextBtn">⏭</button>
+    </div>
+    <div class="player-progress">
+      <span id="currentTime">0:00</span>
+      <input type="range" id="progressBar" value="0" max="100">
+      <span id="duration">0:00</span>
+    </div>
+    <div class="player-actions">
+      <button id="sleepTimerBtn" title="Sleep Timer">🌙</button>
+    </div>
+  </div>
+
+  <!-- Скрытый аудио-тег -->
+  <audio id="mainAudio"></audio>
+
+  <script src="script.js"></script>
 </body>
 </html>
