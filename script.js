@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const libraryGrid = document.getElementById('libraryGrid');
   
-  function renderTracks(filter = '') {
+    function renderTracks(filter = '') {
     libraryGrid.innerHTML = '';
     const filtered = subliminals.filter(s => 
       s.title.toLowerCase().includes(filter.toLowerCase()) || 
@@ -56,18 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
     filtered.forEach(track => {
       const card = document.createElement('div');
       card.className = 'track-card';
+      
+      // Формируем правильное имя картинки (01.jpg, 02.jpg и т.д.)
+      const imgNum = track.id.toString().padStart(2, '0');
+      
       card.innerHTML = `
-        <div class="track-cover">♫</div>
-        <div class="track-title">${track.id.toString().padStart(2, '0')}. ${track.title}</div>
+        <div class="track-cover">
+          <span class="fallback-icon">♫</span>
+          <img src="images/${imgNum}.jpg" alt="${track.title}" onerror="this.style.display='none'">
+        </div>
+        <div class="track-title">${imgNum}. ${track.title}</div>
         <div class="play-icon">▶</div>
       `;
       card.addEventListener('click', () => playTrack(track));
       libraryGrid.appendChild(card);
     });
   }
-  
-  renderTracks();
-
   // Поиск
   document.getElementById('searchInput').addEventListener('input', (e) => {
     renderTracks(e.target.value);
