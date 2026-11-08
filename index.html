@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>MR1UCID — Create Your Own Reality</title>
-  
-  <!-- SEO & Meta -->
   <meta name="description" content="A space for shifting, manifestation, subliminals and becoming the version of yourself you've always imagined." />
   <meta name="theme-color" content="#09090D" />
   <link rel="canonical" href="https://mr1ucid.github.io/" />
-  
-  <!-- Open Graph (Для красивых ссылок в Telegram/WhatsApp) -->
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mr1ucid.github.io/" />
   <meta property="og:title" content="MR1UCID — Create Your Own Reality" />
@@ -18,17 +16,17 @@
   <meta property="og:image" content="https://mr1ucid.github.io/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  
-  <!-- Twitter Cards -->
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MR1UCID — Create Your Own Reality" />
   <meta name="twitter:description" content="A space for shifting, manifestation, subliminals..." />
   <meta name="twitter:image" content="https://mr1ucid.github.io/og-image.jpg" />
 
-  <!-- PWA & Icons -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +44,7 @@
     <div class="film-grain"></div>
   </div>
 
-  <!-- Навигация -->
+  <!-- Верхняя навигация (десктоп) -->
   <header class="top-nav">
     <a href="#home" class="logo">MR1UCID</a>
     <nav class="nav-links">
@@ -58,10 +56,10 @@
     <button id="installPwaBtn" class="btn-install" style="display: none;">Install App</button>
   </header>
 
-  <!-- Основной контент (SPA Контейнер) -->
+  <!-- Основной контент (SPA) -->
   <main id="app-container">
 
-    <!-- ================= ГЛАВНАЯ ================= -->
+    <!-- ГЛАВНАЯ -->
     <section id="home" class="page active">
       <div class="hero">
         <h1 class="hero-title">CREATE YOUR<br><em>OWN REALITY</em></h1>
@@ -71,50 +69,32 @@
           <a href="#shifting" class="btn-secondary">Discover Your Reality</a>
         </div>
       </div>
-      
       <div class="home-grid">
-        <a href="#subliminals" class="card nav-card">
-          <h3>Subliminals</h3>
-          <p>25 авторских треков для настройки подсознания.</p>
-        </a>
-        <a href="#shifting" class="card nav-card">
-          <h3>Shifting</h3>
-          <p>Создай скрипт своей идеальной реальности.</p>
-        </a>
-        <a href="#manifestation" class="card nav-card">
-          <h3>Manifestation</h3>
-          <p>Трекеры 369, 55x5 и дневник желаний.</p>
-        </a>
-        <a href="#my-space" class="card nav-card">
-          <h3>My Space</h3>
-          <p>Твоя личная вселенная и Vision Board.</p>
-        </a>
+        <a href="#subliminals" class="card nav-card"><h3>Subliminals</h3><p>25 авторских треков для настройки подсознания.</p></a>
+        <a href="#shifting" class="card nav-card"><h3>Shifting</h3><p>Создай скрипт своей идеальной реальности.</p></a>
+        <a href="#manifestation" class="card nav-card"><h3>Manifestation</h3><p>Трекеры 369, 55x5 и дневник желаний.</p></a>
+        <a href="#my-space" class="card nav-card"><h3>My Space</h3><p>Твоя личная вселенная и Vision Board.</p></a>
       </div>
     </section>
 
-    <!-- ================= САБЛИМИНАЛЫ ================= -->
+    <!-- САБЛИМИНАЛЫ -->
     <section id="subliminals" class="page">
       <div class="section-header">
         <h2>My Subliminals</h2>
         <p>Нажми Play. Позволь звуку работать за тебя.</p>
       </div>
-      
       <div class="search-bar">
         <input type="text" id="searchInput" placeholder="Поиск (например: ранняя пташка, учеба, любовь...)">
       </div>
-
-      <div class="library-grid" id="libraryGrid">
-        <!-- Треки генерируются через JS для чистоты кода -->
-      </div>
+      <div class="library-grid" id="libraryGrid"></div>
     </section>
 
-    <!-- ================= SHIFTING ================= -->
+    <!-- SHIFTING -->
     <section id="shifting" class="page">
       <div class="section-header">
         <h2>Shifting & Desired Reality</h2>
         <p>Создай свой сценарий, свою вселенную.</p>
       </div>
-      
       <div class="shifting-container">
         <div class="card script-creator">
           <h3>DR Script Creator</h3>
@@ -128,13 +108,12 @@
       </div>
     </section>
 
-    <!-- ================= MANIFESTATION ================= -->
+    <!-- MANIFESTATION -->
     <section id="manifestation" class="page">
       <div class="section-header">
         <h2>Manifestation Tools</h2>
         <p>Практики, которые меняют реальность.</p>
       </div>
-      
       <div class="tools-grid">
         <div class="card tool-card">
           <h3>369 Method</h3>
@@ -146,8 +125,8 @@
             <button class="btn-secondary" onclick="update369('night')">Night (9)</button>
           </div>
           <p id="status369">Progress: 0/18</p>
+          <button id="reset369" class="btn-secondary" style="margin-top:10px;">Сбросить прогресс</button>
         </div>
-        
         <div class="card tool-card">
           <h3>Affirmations Generator</h3>
           <p>Случайная аффирмация для поднятия вибраций.</p>
@@ -157,7 +136,7 @@
       </div>
     </section>
 
-    <!-- ================= MY SPACE ================= -->
+    <!-- MY SPACE -->
     <section id="my-space" class="page">
       <div class="section-header">
         <h2>My Space</h2>
@@ -178,7 +157,7 @@
 
   </main>
 
-  <!-- ================= ГЛОБАЛЬНЫЙ АУДИОПЛЕЕР ================= -->
+  <!-- Глобальный плеер -->
   <div class="global-player" id="globalPlayer">
     <div class="player-info">
       <div class="player-cover" id="playerCover"></div>
@@ -198,11 +177,37 @@
       <span id="duration">0:00</span>
     </div>
     <div class="player-actions">
+      <button id="shuffleBtn" title="Shuffle">🔀</button>
+      <button id="repeatBtn" title="Repeat">🔁</button>
       <button id="sleepTimerBtn" title="Sleep Timer">🌙</button>
     </div>
   </div>
 
-  <!-- Скрытый аудио-тег -->
+  <!-- Нижняя навигация (мобильная) -->
+  <nav class="bottom-nav" id="bottomNav">
+    <a href="#home" class="bottom-nav__item active" data-page="home">
+      <span class="bottom-nav__icon">🏠</span>
+      <span class="bottom-nav__label">Home</span>
+    </a>
+    <a href="#subliminals" class="bottom-nav__item" data-page="subliminals">
+      <span class="bottom-nav__icon">🎧</span>
+      <span class="bottom-nav__label">Subliminals</span>
+    </a>
+    <a href="#shifting" class="bottom-nav__item" data-page="shifting">
+      <span class="bottom-nav__icon">✨</span>
+      <span class="bottom-nav__label">Shifting</span>
+    </a>
+    <a href="#manifestation" class="bottom-nav__item" data-page="manifestation">
+      <span class="bottom-nav__icon">📝</span>
+      <span class="bottom-nav__label">Manifestation</span>
+    </a>
+    <a href="#my-space" class="bottom-nav__item" data-page="my-space">
+      <span class="bottom-nav__icon">👤</span>
+      <span class="bottom-nav__label">My Space</span>
+    </a>
+  </nav>
+
+  <!-- Скрытое аудио -->
   <audio id="mainAudio"></audio>
 
   <script src="script.js"></script>

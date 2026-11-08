@@ -1,18 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  // 1. SPA РОУТИНГ
+  // ================= 1. SPA РОУТИНГ =================
   const pages = document.querySelectorAll('.page');
+  const bottomNavItems = document.querySelectorAll('.bottom-nav__item');
+
   function navigateTo(hash) {
     const targetId = hash.replace('#', '') || 'home';
     pages.forEach(p => p.classList.remove('active'));
     const targetPage = document.getElementById(targetId);
     if (targetPage) targetPage.classList.add('active');
     window.scrollTo(0, 0);
+
+    // Подсветка нижней навигации
+    bottomNavItems.forEach(item => {
+      item.classList.toggle('active', item.dataset.page === targetId);
+    });
   }
+
   window.addEventListener('hashchange', () => navigateTo(window.location.hash));
   if (window.location.hash) navigateTo(window.location.hash);
 
-  // 2. ДАННЫЕ САБЛИМИНАЛОВ
+  // ================= 2. ДАННЫЕ САБЛИМИНАЛОВ =================
   const subliminals = [
     { id: 1, title: 'ᴇᴀrly ʙird', file: 'early_bird', tags: 'ранняя пташка рано вставать сон' },
     { id: 2, title: 'vᴀʍᴩirᴇ', file: 'vampire', tags: 'вампир клыки аура внешность' },
@@ -20,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 4, title: 'nᴇw ᴩhᴏnᴇ', file: 'new_phone', tags: 'новый телефон айфон гаджет' },
     { id: 5, title: 'wᴇighᴛ lᴏss', file: 'weight_loss', tags: 'похудение стройность тело вес' },
     { id: 6, title: 'ᴛiʍᴇ ᴄᴏɴᴛrᴏl', file: 'time_control', tags: 'время контроль тайм менеджмент' },
-    { id: 7, title: 'ʙᴏᴏsᴛᴇʀ', file: 'booster', tags: 'бустер усиление мотивация' },
+    { id: 7, title: 'ʙᴏᴏsᴛᴇr', file: 'booster', tags: 'бустер усиление мотивация' },
     { id: 8, title: 'dᴏll ʙᴇᴀuᴛʏ', file: 'doll_beauty', tags: 'кукольная красота лицо' },
     { id: 9, title: 'rᴇsᴩᴇᴄᴛ frᴏʍ ᴛᴇᴀᴄhᴇrs', file: 'respect_from_teachers', tags: 'уважение учителей школа учеба' },
     { id: 10, title: 'lᴏvᴇ', file: 'love', tags: 'любовь отношения' },
@@ -43,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const libraryGrid = document.getElementById('libraryGrid');
   
-  // 3. РЕНДЕР КАРТОЧЕК С КАРТИНКАМИ
+  // ================= 3. РЕНДЕР КАРТОЧЕК С ОБЛОЖКАМИ =================
   function renderTracks(filter = '') {
     libraryGrid.innerHTML = '';
     const filtered = subliminals.filter(s => 
@@ -57,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const imgNum = track.id.toString().padStart(2, '0');
       
-      // Подставляем картинку. Если её нет, покажется нотка.
       card.innerHTML = `
         <div class="track-cover">
           <span class="fallback-icon">♫</span>
@@ -71,25 +78,37 @@ document.addEventListener('DOMContentLoaded', () => {
       libraryGrid.appendChild(card);
     });
   }
+  
   renderTracks();
 
-  // Поиск
   document.getElementById('searchInput').addEventListener('input', (e) => {
     renderTracks(e.target.value);
   });
 
-  // 4. АУДИОПЛЕЕР И КНОПКИ
+  // ================= 4. АУДИОПЛЕЕР =================
   const audio = document.getElementById('mainAudio');
   const player = document.getElementById('globalPlayer');
   const playPauseBtn = document.getElementById('playPauseBtn');
   const nextBtn = document.getElementById('nextBtn');
   const prevBtn = document.getElementById('prevBtn');
+  const progressBar = document.getElementById('progressBar');
+  const currentTimeEl = document.getElementById('currentTime');
+  const durationEl = document.getElementById('duration');
+  const playerCover = document.getElementById('playerCover');
+  const playerTitle = document.getElementById('playerTitle');
+  const playerStatus = document.getElementById('playerStatus');
+  const shuffleBtn = document.getElementById('shuffleBtn');
+  const repeatBtn = document.getElementById('repeatBtn');
+  const sleepTimerBtn = document.getElementById('sleepTimerBtn');
+
   let currentTrackIndex = -1;
+  let isShuffle = false;
+  let isRepeat = false;
+  let sleepTimer = null;
 
   function playTrack(track) {
     const trackIndex = subliminals.findIndex(t => t.id === track.id);
     
-    // Если трек уже играет, ставим на паузу
     if (currentTrackIndex === trackIndex && !audio.paused) {
       audio.pause();
       playPauseBtn.textContent = '▶';
@@ -97,71 +116,233 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     currentTrackIndex = trackIndex;
-    audio.src = `audio/${track.file}.mp3`; 
+    audio.src = `audio/${track.file}.mp3`;
+    audio.load();
     audio.play().catch(e => console.log("Audio error:", e));
     
     player.classList.add('active');
-    document.getElementById('playerTitle').textContent = track.title;
-    document.getElementById('playerStatus').textContent = 'Playing';
+    playerTitle.textContent = track.title;
+    playerStatus.textContent = 'Playing...';
     playPauseBtn.textContent = '⏸';
+
+    // Обложка в плеере
+    const imgNum = track.id.toString().padStart(2, '0');
+    playerCover.innerHTML = `<img src="images/${imgNum}.jpg" alt="${track.title}" onerror="this.style.display='none'">`;
   }
 
-  // Кнопка Play/Pause
+  // Play / Pause
   playPauseBtn.addEventListener('click', () => {
     if (audio.paused) { audio.play(); playPauseBtn.textContent = '⏸'; }
     else { audio.pause(); playPauseBtn.textContent = '▶'; }
   });
 
-  // Кнопка СЛЕДУЮЩИЙ трек
+  // Next
   nextBtn.addEventListener('click', () => {
-    if (currentTrackIndex === -1) return; // Если ничего не играет
-    let nextIndex = currentTrackIndex + 1;
-    if (nextIndex >= subliminals.length) nextIndex = 0; // Зацикливаем на первый
+    if (currentTrackIndex === -1) return;
+    let nextIndex;
+    if (isShuffle) {
+      nextIndex = Math.floor(Math.random() * subliminals.length);
+    } else {
+      nextIndex = currentTrackIndex + 1;
+      if (nextIndex >= subliminals.length) nextIndex = 0;
+    }
     playTrack(subliminals[nextIndex]);
   });
 
-  // Кнопка ПРЕДЫДУЩИЙ трек
+  // Prev
   prevBtn.addEventListener('click', () => {
-    if (currentTrackIndex === -1) return; // Если ничего не играет
+    if (currentTrackIndex === -1) return;
     let prevIndex = currentTrackIndex - 1;
-    if (prevIndex < 0) prevIndex = subliminals.length - 1; // Зацикливаем на последний
+    if (prevIndex < 0) prevIndex = subliminals.length - 1;
     playTrack(subliminals[prevIndex]);
   });
 
-  // 5. SHIFTING
+  // Прогресс
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      progressBar.value = (audio.currentTime / audio.duration) * 100;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    durationEl.textContent = formatTime(audio.duration);
+  });
+
+  progressBar.addEventListener('input', () => {
+    if (audio.duration) {
+      audio.currentTime = (progressBar.value / 100) * audio.duration;
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    if (isRepeat) {
+      audio.currentTime = 0;
+      audio.play();
+    } else {
+      nextBtn.click();
+    }
+  });
+
+  audio.addEventListener('playing', () => {
+    playerStatus.textContent = 'Playing';
+    playPauseBtn.textContent = '⏸';
+  });
+
+  audio.addEventListener('pause', () => {
+    playerStatus.textContent = 'Paused';
+    playPauseBtn.textContent = '▶';
+  });
+
+  audio.addEventListener('waiting', () => {
+    playerStatus.textContent = 'Buffering...';
+  });
+
+  audio.addEventListener('error', () => {
+    playerStatus.textContent = 'Error loading audio';
+  });
+
+  // Shuffle / Repeat
+  shuffleBtn.addEventListener('click', () => {
+    isShuffle = !isShuffle;
+    shuffleBtn.style.color = isShuffle ? 'var(--lavender)' : 'var(--silver)';
+  });
+
+  repeatBtn.addEventListener('click', () => {
+    isRepeat = !isRepeat;
+    repeatBtn.style.color = isRepeat ? 'var(--lavender)' : 'var(--silver)';
+  });
+
+  // Sleep Timer
+  sleepTimerBtn.addEventListener('click', () => {
+    if (sleepTimer) {
+      clearTimeout(sleepTimer);
+      sleepTimer = null;
+      sleepTimerBtn.style.color = 'var(--silver)';
+      alert('Таймер сна отменен');
+      return;
+    }
+    const minutes = prompt('Через сколько минут выключить музыку? (15, 30, 45, 60, 90)', '30');
+    if (!minutes) return;
+    const ms = parseInt(minutes) * 60 * 1000;
+    if (isNaN(ms)) return;
+    
+    sleepTimer = setTimeout(() => {
+      // Плавное затухание
+      let vol = audio.volume;
+      const fade = setInterval(() => {
+        if (vol > 0.01) {
+          vol -= 0.01;
+          audio.volume = vol;
+        } else {
+          clearInterval(fade);
+          audio.pause();
+          audio.volume = 1;
+          sleepTimer = null;
+          sleepTimerBtn.style.color = 'var(--silver)';
+        }
+      }, 100);
+    }, ms);
+    
+    sleepTimerBtn.style.color = 'var(--lavender)';
+    alert(`Таймер установлен на ${minutes} минут`);
+  });
+
+  function formatTime(sec) {
+    if (isNaN(sec)) return '0:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  }
+
+  // ================= 5. SHIFTING (DR Script Creator) =================
   const drForm = document.getElementById('drScriptForm');
   const savedScriptsDiv = document.getElementById('savedScripts');
 
   function loadScripts() {
-    if(!savedScriptsDiv) return;
-    const scripts = JSON.parse(localStorage.getItem('mr_scripts') || '[]');
-    savedScriptsDiv.innerHTML = scripts.map(s => `<div class="script-item"><h4>${s.name}</h4><p>${s.desc}</p></div>`).join('');
+    if (!savedScriptsDiv) return;
+    try {
+      const scripts = JSON.parse(localStorage.getItem('mr_scripts') || '[]');
+      savedScriptsDiv.innerHTML = '';
+      scripts.forEach((s, index) => {
+        const item = document.createElement('div');
+        item.className = 'script-item';
+        const h4 = document.createElement('h4');
+        h4.textContent = s.name;
+        const p = document.createElement('p');
+        p.textContent = s.desc;
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'Удалить';
+        delBtn.className = 'btn-secondary';
+        delBtn.style.marginTop = '8px';
+        delBtn.addEventListener('click', () => {
+          if (confirm('Удалить сценарий?')) {
+            const scripts = JSON.parse(localStorage.getItem('mr_scripts') || '[]');
+            scripts.splice(index, 1);
+            localStorage.setItem('mr_scripts', JSON.stringify(scripts));
+            loadScripts();
+          }
+        });
+        item.appendChild(h4);
+        item.appendChild(p);
+        item.appendChild(delBtn);
+        savedScriptsDiv.appendChild(item);
+      });
+    } catch (e) {
+      console.error('Ошибка загрузки сценариев', e);
+    }
   }
-  
-  if(drForm) {
+
+  if (drForm) {
     drForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('drName').value;
-      const desc = document.getElementById('drDesc').value;
-      const scripts = JSON.parse(localStorage.getItem('mr_scripts') || '[]');
-      scripts.push({ name, desc });
-      localStorage.setItem('mr_scripts', JSON.stringify(scripts));
-      drForm.reset();
-      loadScripts();
+      const name = document.getElementById('drName').value.trim();
+      const desc = document.getElementById('drDesc').value.trim();
+      if (!name || !desc) return;
+      try {
+        const scripts = JSON.parse(localStorage.getItem('mr_scripts') || '[]');
+        scripts.push({ name, desc });
+        localStorage.setItem('mr_scripts', JSON.stringify(scripts));
+        drForm.reset();
+        loadScripts();
+      } catch (e) {
+        console.error('Ошибка сохранения', e);
+      }
     });
     loadScripts();
   }
 
-  // 6. MANIFESTATION (369 и 200 Аффирмаций)
-  let progress369 = { morning: 0, day: 0, night: 0 };
+  // ================= 6. MANIFESTATION (369 и Аффирмации) =================
+  let progress369 = JSON.parse(localStorage.getItem('mr_369') || '{"morning":0,"day":0,"night":0}');
+  const status369El = document.getElementById('status369');
+
+  function update369UI() {
+    if (status369El) {
+      status369El.textContent = `Progress: ${progress369.morning + progress369.day + progress369.night}/18`;
+    }
+  }
+
   window.update369 = (time) => {
     if (time === 'morning' && progress369.morning < 3) progress369.morning++;
     else if (time === 'day' && progress369.day < 6) progress369.day++;
     else if (time === 'night' && progress369.night < 9) progress369.night++;
-    const statusEl = document.getElementById('status369');
-    if(statusEl) statusEl.textContent = `Progress: ${progress369.morning + progress369.day + progress369.night}/18`;
+    localStorage.setItem('mr_369', JSON.stringify(progress369));
+    update369UI();
   };
 
+  const resetBtn = document.getElementById('reset369');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (confirm('Сбросить прогресс 369?')) {
+        progress369 = { morning: 0, day: 0, night: 0 };
+        localStorage.setItem('mr_369', JSON.stringify(progress369));
+        update369UI();
+      }
+    });
+  }
+  update369UI();
+
+  // 200 аффирмаций
   const affirmations = [
     "Я — творец своей реальности.", "Я обладаю невероятной харизмой.", "Я абсолютно уверен(а) в себе.", "Я люблю себя без условий.", "Мое самоощущение непоколебимо.", "Я всегда выбираю себя.", "Я достоин(на) всего самого лучшего.", "Мое мнение о себе важнее чужого.", "Я живу в гармонии с собой.", "Я смело смотрю в будущее.", "Я горжусь тем, кем становлюсь.", "Мой внутренний мир прекрасен.", "Я излучаю спокойствие и силу.", "Я не позволяю сомнениям управлять мной.", "Каждый день я становлюсь лучше.", "Я заслуживаю уважения и любви.", "Мой разум ясен, а сердце спокойно.", "Я принимаю себя целиком и полностью.", "Я — магнит для позитивных людей.", "Моя жизнь наполнена смыслом.", "Я контролирую свои мысли и эмоции.", "Я свободен(на) от чужого осуждения.", "Я сильная и независимая личность.", "Я легко справляюсь с любыми трудностями.", "Мой внутренний голос поддерживает меня.", "Я отпускаю прошлое и живу настоящим.", "Я всегда знаю, что для меня лучше.", "Я уникален(на) и неповторим(а).", "Я источник вдохновения для других.", "Я счастлив(а) просто потому, что существую.", "Я позволяю себе мечтать по-крупному.", "Я не боюсь быть собой.", "Моя уверенность растет с каждым днем.", "Я достоин(на) быть услышанным(ой).", "Я создаю свою жизнь своими руками.", "Я выбираю мысли, которые делают меня сильнее.", "Мое будущее светло и прекрасно.", "Я живу в состоянии внутреннего покоя.", "Я — лучшая версия себя прямо сейчас.", "Я легко отпускаю то, что мне не служит.",
     "Моя внешность становится всё более привлекательной.", "Я выгляжу потрясающе каждый день.", "Моя кожа чистая, сияющая и здоровая.", "Мои волосы густые, блестящие и красивые.", "Мое лицо привлекает восхищенные взгляды.", "Я стройный(ая) и подтянутый(ая).", "Мое тело с каждым днем становится здоровее.", "У меня идеальная фигура моей мечты.", "Мои глаза сияют и притягивают людей.", "Я выгляжу моложе с каждым днем.", "Моя улыбка неотразима.", "Я излучаю магнетическую привлекательность.", "Мое тело идеально для меня.", "Я легко поддерживаю свой идеальный вес.", "Мое отражение в зеркале восхищает меня.", "У меня безупречный вкус в одежде.", "Моя кожа излучает здоровое сияние.", "Я выгляжу стильно и дорого.", "Мои черты лица становятся всё более гармоничными.", "Я доволен(на) своей внешностью на 100%.", "Мое тело становится всё более точеным.", "У меня роскошные и густые волосы.", "Мои ногти крепкие и красивые.", "Я выгляжу отдохнувшим(ей) и свежим(ей).", "Мое тело быстро восстанавливается.", "Я привлекаю внимание своей эстетикой.", "Мой образ уникален и красив.", "Я чувствую себя комфортно в своем теле.", "Моя красота раскрывается с каждым днем.", "У меня идеальная осанка и легкая походка.",
@@ -173,17 +354,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.generateAffirmation = () => {
     const el = document.getElementById('randomAffirmation');
-    if(el) {
+    if (el) {
       const randomIndex = Math.floor(Math.random() * affirmations.length);
       el.textContent = `"${affirmations[randomIndex]}"`;
     }
   };
 
-  // 7. MY SPACE (Часы)
+  // ================= 7. MY SPACE (Часы) =================
   function updateClock() {
     const now = new Date();
     const clockEl = document.getElementById('clock');
-    if(clockEl) {
+    if (clockEl) {
       clockEl.textContent = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
       document.getElementById('date').textContent = now.toLocaleDateString('ru-RU', { weekday: 'long', month: 'long', day: 'numeric' });
     }
@@ -191,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // 8. PWA INSTALL
+  // ================= 8. PWA INSTALL =================
   let deferredPrompt;
   const installBtn = document.getElementById('installPwaBtn');
   if (installBtn) {
