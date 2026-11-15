@@ -1,11 +1,17 @@
-const CACHE_NAME = 'mr1ucid-v2';
+const CACHE_NAME = 'mr1ucid-v3';
 const ASSETS = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
   '/manifest.json',
-  '/favicon.svg'
+  '/favicon.svg',
+  '/audio/15_kg.mp3',
+  '/audio/wardrobe.mp3',
+  '/audio/magic.mp3',
+  '/images/26.jpg',
+  '/images/27.jpg',
+  '/images/28.jpg'
 ];
 
 self.addEventListener('install', (e) => {
