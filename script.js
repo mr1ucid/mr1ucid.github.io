@@ -25,7 +25,10 @@ const tracks = [
   {id:22,title:'ᴄᴩ',file:'cp',tags:'к4 одержимость отношения',category:'relationships'},
   {id:23,title:'idᴇᴀl ʍᴇ',file:'ideal_me',tags:'идеальный я всё включено',category:'wellbeing'},
   {id:24,title:'ʍᴏnᴇy fᴏr hᴏʙʙy',file:'money_for_hobby',tags:'деньги хобби заработок',category:'lifestyle'},
-  {id:25,title:'ᴇnglish Ꮯ2',file:'english_c2',tags:'английский язык c2',category:'success'}
+  {id:25,title:'ᴇnglish Ꮯ2',file:'english_c2',tags:'английский язык c2',category:'success'},
+  {id:26,title:'15 kg',file:'15_kg',tags:'15 kg вес тело',category:'wellbeing'},
+  {id:27,title:'wardrobe',file:'wardrobe',tags:'гардероб одежда стиль',category:'lifestyle'},
+  {id:28,title:'magic',file:'magic',tags:'магия волшебство',category:'wellbeing'}
 ];
 const affirmations=[
   {id:'c1',category:'confidence',text:'Я могу двигаться вперёд в своём темпе.'},
@@ -47,13 +50,13 @@ const uid=()=>crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.
 const blank=()=>({version:1,favorites:[],playlists:[],activePlaylistId:'',history:[],queue:[],currentTrackId:null,currentTime:0,volume:1,shuffle:false,repeat:false,playCount:0,scripts:[],intention369:'',progress369:{morning:0,day:0,night:0},method55:{phrase:'',day:today(),count:0,days:[]},dailyIntentions:{},dreams:[],customAffirmations:[],favoriteAffirmations:[],currentAffirmationId:'',boardItems:[],theme:'midnight',quoteDay:'',quoteText:''});
 function parseJSON(value,fallback){try{const x=JSON.parse(value);return x&&typeof x==='object'?x:fallback;}catch{return fallback;}}
 function cleanString(value,max){return typeof value==='string'?value.slice(0,max):'';}
-function cleanIds(value){return Array.isArray(value)?Array.from(new Set(value.filter(n=>Number.isInteger(n)&&n>0&&n<=25))):[];}
+function cleanIds(value){return Array.isArray(value)?Array.from(new Set(value.filter(n=>Number.isInteger(n)&&n>0&&n<=28))):[];}
 function normalize(raw){
   const s=blank();if(!raw||typeof raw!=='object'||Array.isArray(raw))return s;
-  s.favorites=cleanIds(raw.favorites);s.history=cleanIds(raw.history).slice(0,25);s.queue=cleanIds(raw.queue).slice(0,100);
+  s.favorites=cleanIds(raw.favorites);s.history=cleanIds(raw.history).slice(0,28);s.queue=cleanIds(raw.queue).slice(0,100);
   s.playlists=Array.isArray(raw.playlists)?raw.playlists.slice(0,40).map(p=>({id:cleanString(p&&p.id,80)||uid(),name:cleanString(p&&p.name,40),trackIds:cleanIds(p&&p.trackIds)})).filter(p=>p.name):[];
   s.activePlaylistId=cleanString(raw.activePlaylistId,80);
-  s.currentTrackId=Number.isInteger(raw.currentTrackId)&&raw.currentTrackId>0&&raw.currentTrackId<=25?raw.currentTrackId:null;
+  s.currentTrackId=Number.isInteger(raw.currentTrackId)&&raw.currentTrackId>0&&raw.currentTrackId<=28?raw.currentTrackId:null;
   s.currentTime=Number.isFinite(raw.currentTime)&&raw.currentTime>=0?Math.min(raw.currentTime,86400):0;
   s.volume=Number.isFinite(raw.volume)?Math.max(0,Math.min(1,raw.volume)):1;s.shuffle=Boolean(raw.shuffle);s.repeat=Boolean(raw.repeat);
   s.playCount=Number.isInteger(raw.playCount)&&raw.playCount>0?Math.min(raw.playCount,1000000):0;
